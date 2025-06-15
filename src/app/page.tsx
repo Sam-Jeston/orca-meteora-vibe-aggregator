@@ -9,15 +9,15 @@ export default async function Home() {
 
   const pools = [
     ...orca.map((p: OrcaPool) => {
-      const dailyFees = (p.volume?.day || 0) * p.lpFeeRate;
-      const tvl = p.tvl || 0;
+      const dailyFees = parseFloat(p.stats["24h"].fees);
+      const tvl = parseFloat(p.tvlUsdc);
       return {
         protocol: 'Orca' as const,
         address: p.address,
         name: `${p.tokenA.symbol}-${p.tokenB.symbol}`,
         dailyFees,
         tvl,
-        dailyVolume: p.volume?.day || 0,
+        dailyVolume: parseFloat(p.stats["24h"].volume),
         feeToTvlRatio: tvl > 0 ? dailyFees / tvl : 0,
         url: `https://www.orca.so/pools/${p.address}`,
       };
@@ -50,8 +50,11 @@ export default async function Home() {
         <h1 className="text-5xl font-bold text-center mb-8 tracking-wider">
           Orca Meteora Vibe Aggregator
         </h1>
+        <p className="text-center text-sm text-gray-400">
+          Pools with less than 30k USD daily volume or less than 20k USD TVL are excluded.
+        </p>
       </div>
-      <div className="w-full max-w-5xl border border-slate-800 rounded-lg p-4 bg-black bg-opacity-20 shadow-lg shadow-slate-900/50">
+      <div className="w-full max-w-5xl border border-[#00f6ff] rounded-lg p-4 bg-black bg-opacity-50 shadow-[0_0_15px_rgba(0,246,255,0.5)]">
         <PoolsTable pools={filteredPools} />
       </div>
     </main>

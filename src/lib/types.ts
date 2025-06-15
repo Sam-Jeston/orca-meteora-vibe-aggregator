@@ -12,32 +12,77 @@ export interface OrcaToken {
 
 export interface OrcaPool {
   address: string;
-  tokenA: OrcaToken;
-  tokenB: OrcaToken;
-  whitelisted: boolean;
-  token2022: boolean;
-  tickSpacing: number;
-  price: number;
-  lpFeeRate: number;
+  feeGrowthGlobalA: string;
+  feeGrowthGlobalB: string;
+  feeRate: number;
+  liquidity: string;
+  protocolFeeOwedA: string;
+  protocolFeeOwedB: string;
   protocolFeeRate: number;
+  rewardLastUpdatedTimestamp: string;
+  sqrtPrice: string;
+  tickCurrentIndex: number;
+  tickSpacing: number;
+  tickSpacingSeed: string;
+  tokenMintA: string;
+  tokenMintB: string;
+  tokenVaultA: number[];
+  tokenVaultB: string;
+  updatedAt: string;
+  updatedSlot: number;
+  whirlpoolBump: string;
   whirlpoolsConfig: string;
-  modifiedTimeMs: number;
-  tvl: number;
-  volume: {
-    day: number;
-    week: number;
-    month: number;
+  writeVersion: string;
+  adaptiveFee: null | string;
+  adaptiveFeeEnabled: boolean;
+  feeTierIndex: number;
+  hasWarning: boolean;
+  lockedLiquidityPercent: {
+    lockedPercentage: string;
+    name: string;
+  }[];
+  poolType: string;
+  price: string;
+  rewards: {
+    authority: string;
+    emissions_per_second_x64: string;
+    growth_global_x64: string;
+    mint: string;
+    vault: string;
+    active: boolean;
+    emissionsPerSecond: string;
+  }[];
+  stats: {
+    "24h": {
+      volume: string;
+      fees: string;
+      rewards: null;
+      yieldOverTvl: string;
+    };
   };
-  feeApr: {
-    day: number;
-    week: number;
-    month: number;
+  tokenA: {
+    address: string;
+    decimals: number;
+    imageUrl: string;
+    name: string;
+    programId: string;
+    symbol: string;
+    tags: string;
   };
-  totalApr: {
-    day: number;
-    week: number;
-    month: number;
+  tokenB: {
+    address: string;
+    decimals: number;
+    imageUrl: string;
+    name: string;
+    programId: string;
+    symbol: string;
+    tags: string;
   };
+  tokenBalanceA: string;
+  tokenBalanceB: string;
+  tradeEnableTimestamp: string;
+  tvlUsdc: string;
+  yieldOverTvl: string;
 }
 
 export interface MeteoraPool {
@@ -56,7 +101,7 @@ export interface MeteoraPool {
 }
 
 export interface DisplayPool {
-  protocol: 'Orca' | 'Meteora';
+  protocol: "Orca" | "Meteora";
   address: string;
   name: string;
   dailyFees: number;
@@ -64,4 +109,4 @@ export interface DisplayPool {
   dailyVolume: number;
   feeToTvlRatio: number;
   url: string;
-} 
+}

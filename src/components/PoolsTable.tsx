@@ -53,7 +53,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools }: { pools: DisplayPool[]
           placeholder="Filter by name"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="p-2 border rounded"
+          className="p-2 border border-slate-600 rounded bg-transparent focus:outline-none focus:ring-2 focus:ring-slate-500"
         />
       </div>
       <table className="w-full text-left">
@@ -72,7 +72,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools }: { pools: DisplayPool[]
             <tr
               key={pool.address}
               onClick={() => window.open(pool.url, '_blank')}
-              className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="cursor-pointer hover:bg-zinc-800"
             >
               <td className="p-2">{pool.protocol}</td>
               <td className="p-2">{pool.name}</td>
@@ -88,7 +88,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools }: { pools: DisplayPool[]
         <button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
-          className="p-2 border rounded disabled:opacity-50"
+          className="p-2 border border-slate-600 rounded disabled:opacity-50 hover:bg-slate-800"
         >
           Previous
         </button>
@@ -96,7 +96,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools }: { pools: DisplayPool[]
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className="p-2 border rounded disabled:opacity-50"
+          className="p-2 border border-slate-600 rounded disabled:opacity-50 hover:bg-slate-800"
         >
           Next
         </button>

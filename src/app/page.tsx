@@ -51,7 +51,7 @@ export default async function Home() {
           Orca Meteora Vibe Aggregator
         </h1>
       </div>
-      <div className="w-full max-w-5xl border border-[#00f6ff] rounded-lg p-4 bg-black bg-opacity-50 shadow-[0_0_15px_rgba(0,246,255,0.5)]">
+      <div className="w-full max-w-5xl border border-slate-800 rounded-lg p-4 bg-black bg-opacity-20 shadow-lg shadow-slate-900/50">
         <PoolsTable pools={filteredPools} />
       </div>
     </main>

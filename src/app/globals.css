@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0221;
-  --foreground: #00f6ff;
+  --background: #0a0a0a;
+  --foreground: #e2e8f0;
   --muted-foreground: #a9a9a9;
 }
 
@@ -17,26 +17,10 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 5px #00f6ff, 0 0 10px #00f6ff, 0 0 15px #00f6ff;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-@keyframes pulsate {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 5px #00f6ff, 0 0 10px #00f6ff, 0 0 15px #00f6ff;
-  }
-  50% {
-    opacity: 0.7;
-    text-shadow: 0 0 10px #00f6ff, 0 0 20px #00f6ff, 0 0 30px #00f6ff;
-  }
-}
-
-.animate-pulsate {
-  animation: pulsate 2s infinite;
 }

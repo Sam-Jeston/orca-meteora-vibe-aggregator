@@ -8,8 +8,8 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Solfi Pulse",
-  description: "Dashboard for Solfi token pools",
+  title: "Orca Meteora Vibe Aggregator",
+  description: "Aggregator for Orca Whirlpools and Meteora DLMMs",
 };
 
 export default function RootLayout({

@@ -1,18 +1,20 @@
 export async function getPools() {
-    // Get Orca pools
-    const orcaApiUrl = "https://api.mainnet.orca.so/v1/whirlpool/list";
-    const orcaResponse = await fetch(orcaApiUrl);
-    const orcaData = await orcaResponse.json();
-    const orcaPools = orcaData.whirlpools;
+  // Get Orca pools
+  const x = Date.now();
+  const [orcaData, meteoraData] = await Promise.all([
+    fetch("https://api.mainnet.orca.so/v1/whirlpool/list").then((res) =>
+      res.json()
+    ),
+    fetch("https://dlmm-api.meteora.ag/pair/all").then((res) => res.json()),
+  ]);
 
-    // Get Meteora pools
-    const meteoraApiUrl = "https://dlmm-api.meteora.ag/pair/all";
-    const meteoraResponse = await fetch(meteoraApiUrl);
-    const meteoraData = await meteoraResponse.json();
-    const meteoraPools = meteoraData;
+  console.log("Time taken:", Date.now() - x);
 
-    return {
-        orca: orcaPools,
-        meteora: meteoraPools,
-    };
-} 
+  const orcaPools = orcaData.whirlpools;
+  const meteoraPools = meteoraData;
+
+  return {
+    orca: orcaPools,
+    meteora: meteoraPools,
+  };
+}

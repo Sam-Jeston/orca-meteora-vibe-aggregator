@@ -42,7 +42,7 @@ export default async function Home() {
     // Remove very low volume or TVL pools
     .filter(pool => pool.dailyVolume >= 30000 && pool.tvl >= 20000)
     // Remove any pools where the fee/tvl ration is >100%, likely scam tokens
-    .filter((pool) => pool.feeToTvlRatio <= 1)
+    .filter((pool) => pool.feeToTvlRatio <= 0.2)
 
   return (
     <main className="flex min-h-screen flex-col items-center p-4 md:p-8">
@@ -51,7 +51,7 @@ export default async function Home() {
           Orca Meteora Vibe Aggregator
         </h1>
         <p className="text-center text-sm text-gray-400">
-          Pools with less than 30k USD daily volume or less than 20k USD TVL are excluded.
+          Pools with less than 30k USD daily volume or less than 20k USD TVL are excluded. Pools with a 24hr fee/tvl ratio greater than 20% are also excluded, as rug rates with these tokens are very high.
         </p>
       </div>
       <div className="w-full max-w-5xl border border-[#00f6ff] rounded-lg p-4 bg-black bg-opacity-50 shadow-[0_0_15px_rgba(0,246,255,0.5)]">
